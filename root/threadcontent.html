@@ -1,0 +1,531 @@
+[% WRAPPER page.tt %]
+
+<link rel="stylesheet" type="text/css" href="../threadcontent_files/css_002.css">
+<link rel="stylesheet" type="text/css" href="../threadcontent_files/css_003.css">
+	
+<link rel="stylesheet" type="text/css" href="../threadcontent_files/css.css">
+
+	<div id="above_postlist" class="above_postlist">
+		<form id="" action="[% c.uri_for('delete_thread') %]" method="post" class="">
+		[% IF c.user_exists %]
+            [% IF c.user.get('user_name') == thread.topic_owner.user_name || c.check_user_roles( 'admin' ) %]
+		        <!--<a rel="nofollow" class="newcontent_textcontrol" id="newreplylink_bottom"><span>+</span> Delete Thread</a>-->
+                <input class="newcontent_textcontrol" value="Delete Thread" accesskey="s" title="(Alt + S)" name="sbutton" tabindex="1" id="newreplylink_bottom" onclick="clickedelm = this.value" type="submit">
+            [% END %]
+        [% END %]
+        <input name="thread_id" value="[% thread.thread_id %]" type="hidden">
+        </form>
+	    <img style="display:none" id="progress_newreplylink_top" src="../threadcontent_files/progress.gif" alt="">
+		
+		<div id="pagination_top" class="pagination_top">
+		
+<form id="yui-gen11" action="" method="get" class="pagination popupmenu nohovermenu">
+    <input name="t" value="132387" type="hidden">
+	    <span><a href="[% c.req.uri_with({ page => pager.first_page }) %]">First</a></span>
+		
+        [% WHILE i < pager.total_entries %]
+            [% IF (j+2) > pager.current_page && j < pager.current_page %]
+            <span class="selected">
+            [% ELSE %]
+            <span>
+            [% END %]            
+            <a href="[% c.req.uri_with({ page => j+1 }) %]" title="Show results [% i*pager.entries_per_page %] to [% i + j*pager.entries_per_page %] of [% totalPost %]">[% j+1 %]</a></span>
+            [% j= j+1 %]
+            [% i = j*pager.entries_per_page %]           
+		[% END %]
+   
+	
+		<span class="prev_next"><a rel="next" href="[% c.req.uri_with({ page => pager.next_page })%]" title="Next Page - Results 11 to 20 of 23"><img title="Next" src="../threadcontent_files/next-right.png" alt="Next"></a></span>
+		<span><a href="[% c.req.uri_with({ page => pager.previous_page })%]">Previous</a></span>
+		
+		<span class="first_last"><a href="[% c.req.uri_with({ page => pager.last_page }) %]" title="Last Page - Results 21 to 23 of 23">Last<img title="Last" src="../threadcontent_files/last-right.png" alt="Last"></a></span>
+		 
+	
+	<ul id="yui-gen12" class="popupbody">
+		<li class="formsubmit jumptopage"><label>Jump to page: <input name="page" size="4" type="text"></label> <input class="button" value="Go" type="submit"></li>
+	</ul>
+</form>
+		
+			<div id="postpagestats_above" class="postpagestats">
+				Results 1 to 3 of [% totalPost %]
+			</div>
+		</div>
+	</div>
+	<div id="pagetitle" class="pagetitle">
+		Thread: <b>[% thread.thread_title %]</b><br>
+		
+		
+			
+<fb:like class=" fb_edge_widget_with_comment fb_iframe_widget" href="http://" font="tahoma" layout="standard" show_faces="false" width="260" action="like" colorscheme="light"><span style="height: 35px; width: 260px;"><iframe src="../threadcontent_files/like.htm" class="fb_ltr" title="Like this content on Facebook." style="border: medium none; overflow: hidden; height: 35px; width: 260px;" name="f3d85b7c3db8b36" id="f96c1344e485de" scrolling="no"></iframe></span></fb:like>
+		
+	</div>
+	<div id="thread_controls" class="thread_controls toolsmenu">
+		<div>
+		<ul id="postlist_popups" class="postlist_popups popupgroup">
+			
+			
+			<li class="popupmenu" id="threadtools">
+				<h6><a id="yui-gen15" class="popupctrl" href="javascript://">Thread Tools</a></h6>
+				<ul id="yui-gen14" class="popupbody">
+					<li><a href="http://" accesskey="3" rel="nofollow">Show Printable Version</a></li>
+					
+						<li><a href="http://" rel="nofollow">Email this Page…</a></li>
+					
+					<li>
+						
+							<a href="http://" rel="nofollow">Subscribe to this Thread…</a>
+						
+					</li>
+					
+				</ul>
+			</li>
+
+			
+
+			
+				<li class="popupmenu searchthread menusearch" id="searchthread">
+					<h6><a id="yui-gen17" class="popupctrl" href="javascript://">Search Thread</a></h6>
+					<form action="/home/search.php" method="post">
+						<ul id="yui-gen16" class="popupbody">
+							<li>
+								<input name="query" class="searchbox" value="Search..." tabindex="13" type="text">
+								<input class="button" value="Search" tabindex="14" type="submit">
+							</li>
+							<li class="formsubmit" id="popupsearch">
+								<div class="submitoptions">&nbsp;</div>
+								<div class="advancedsearchlink"><a rel="nofollow" href="http://thegioitinhoc.vn/home/search.php?search_type=1&amp;searchthreadid=132387&amp;contenttype=vBForum_Post">Advanced Search</a></div>
+							</li>
+						</ul>
+					</form>
+				</li>
+			
+
+			
+				<li class="popupmenu" id="threadrating">
+					<h6><a id="yui-gen19" class="popupctrl" href="javascript://">Rate This Thread</a></h6>
+					<div id="yui-gen18" class="popupbody">
+						<form action="/home/threadrate.php" method="post" id="showthread_threadrate_form">
+							<ul>
+								<li id="threadrating_current" class="hidden" title="Thread Rating: 0 votes,  average."><label>
+									<span class="rating r_right">Current Rating</span>
+								</label></li>
+								
+									<li><label for="r5"><span class="rating r5">
+										<input name="vote" value="5" id="r5" tabindex="20" type="radio"> Excellent
+									</span></label></li>
+									<li><label for="r4"><span class="rating r4_right">
+										<input name="vote" value="4" id="r4" tabindex="21" type="radio"> Good
+									</span></label></li>
+									<li><label for="r3"><span class="rating r3_right">
+										<input name="vote" value="3" id="r3" tabindex="22" type="radio"> Average
+									</span></label></li>
+									<li><label for="r2"><span class="rating r2_right">
+										<input name="vote" value="2" id="r2" tabindex="23" type="radio"> Bad
+									</span></label></li>
+									<li><label for="r1"><span class="rating r1_right">
+										<input name="vote" value="1" id="r1" tabindex="24" type="radio"> Terrible
+									</span></label></li>
+									<li class="formsubmit"><input value="Vote Now" class="button" type="button"></li>
+								
+							</ul>
+							<input name="s" value="" type="hidden">
+							<input name="securitytoken" value="1344701926-0e1946de6c4101a2ee8147cf3e4e3b5a369bb646" type="hidden">
+							<input name="t" value="132387" type="hidden">
+							<input name="pp" value="10" type="hidden">
+							<input name="page" value="1" type="hidden">
+						</form>
+					</div>
+					<script type="text/javascript">
+					<!--
+						vB_AJAX_ThreadRate_Init('showthread_threadrate_form', 132387);
+					//-->
+					</script>
+				</li>
+			
+
+			
+				<li class="popupmenu" id="displaymodes">
+					<h6><a id="yui-gen21" class="popupctrl" href="javascript://">Display</a></h6>
+					<ul id="yui-gen20" class="popupbody">
+						<li><label>Linear Mode</label></li>
+						<li><a rel="nofollow" href="http://"> Switch to Hybrid Mode</a></li>
+						<li><a rel="nofollow" href="http://"> Switch to Threaded Mode</a></li>
+					</ul>
+				</li>
+			
+
+			
+			</ul>
+		</div>
+	</div>
+
+<div id="postlist" class="postlist restrain">
+	
+
+	
+		<ol id="posts" class="posts" start="1">
+			
+<li class="postbit postbitim postcontainer old" id="post_293642">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                                <span class="date">[% thread.thread_created_date %]</span>
+                                        
+                                </span>
+                                <span class="nodecontrols">
+                                     
+                                </span>
+                        
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div id="yui-gen22" class="popupmenu memberaction">
+	<a id="yui-gen24" rel="nofollow" class="username online popupctrl" href="http://" title="bachmat2 is online now"><strong>[% thread.topic_owner.user_name %]</strong></a>
+	<ul id="yui-gen23" class="popupbody memberaction_body">
+		<li class="left">
+			<a rel="nofollow" href="http://" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="http://" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		<li class="left">
+			<a href="http://" class="siteicon_message" rel="nofollow">
+				Private Message
+			</a>
+		</li>
+		
+	
+		<li class="left">
+			<a rel="nofollow" href="http://" class="siteicon_add">
+				Add as Contact
+			</a>
+		</li>
+	</ul>
+</div>
+						<img title="bachmat2 is online now" class="inlineimg onlinestatus" src="../threadcontent_files/user-online.png" alt="bachmat2 is online now" border="0">
+
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>[% thread.topic_owner.created_date %]</dd>
+					</dl>
+					
+					
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img title="Default" src="../threadcontent_files/icon1.png" alt="Default"> [% thread.thread_title %]
+		</h2>			
+				
+		<div class="content hasad">
+			<div id="post_message_293642">
+				<blockquote class="postcontent restore">
+				   <!--Bat dau body thread-->
+                    <div>
+                        [% thread.thread_content %]
+                    </div>
+                    <br>
+                    <center>
+                    <div>
+                        <img src="[% thread.thread_image %]" id="image post" alt="image post" title="image nice" border="">
+                    </div>
+                    </center> 
+	                <!--Ket thuc body thread-->		
+
+                 </blockquote>
+		     </div>			
+		</div>
+	</div>
+	
+	<hr>
+</li>
+
+     
+<!--Post start here-->
+[% FOREACH post IN posts %]
+<li class="postbit postbitim postcontainer old" id="post_293657">
+	<div class="postdetails_noavatar">
+		<div class="posthead">
+                        
+                                <span class="postdate old">
+                                        
+                                      <span class="date">[% post.post_created_date %]</span>
+                                        
+                                </span>                
+		</div>
+
+		<div class="userinfo_noavatar">
+			<div class="contact">
+				
+				<div class="username_container">
+					
+						<div id="yui-gen25" class="popupmenu memberaction">
+	<a id="yui-gen27" rel="nofollow" class="username online popupctrl" href="http://" title="phamcongdat is online now"><strong>[% post.post_owner.user_name %]</strong></a>
+	<ul id="yui-gen26" class="popupbody memberaction_body">
+		<li class="left">
+			<a rel="nofollow" href="http://" class="siteicon_profile">
+				View Profile
+			</a>
+		</li>
+		
+		<li class="right">
+			<a href="http://" class="siteicon_forum" rel="nofollow">
+				View Forum Posts
+			</a>
+		</li>
+		
+		
+		<li class="left">
+			<a href="http://" class="siteicon_message" rel="nofollow">
+				Private Message
+			</a>
+		</li>
+		
+		<li class="left">
+			<a rel="nofollow" href="http://" class="siteicon_add">
+				Add as Contact
+			</a>
+		</li>
+	
+	</ul>
+</div>
+						<img title=" is online now" class="inlineimg onlinestatus" src="../threadcontent_files/user-online.png" alt="online now" border="0">
+									
+						<div class="imlinks">
+							    
+						</div>
+					
+				</div>
+			</div>
+			
+				<div class="userinfo_extra">
+					<dl class="userstats">
+						<dt>Join Date</dt> <dd>[% post.post_owner.created_date %]</dd>
+	
+					</dl>
+				
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="postbody">
+		
+		<div class="postrow">
+		
+		<h2 class="posttitle icon">
+			<img title="Default" src="../threadcontent_files/icon1.png" alt="Default"> 
+            <form id="" action="[% c.uri_for('delete_post') %]" method="post" class="">
+		    [% IF c.user_exists %]
+                [% IF c.user.get('user_name') == thread.topic_owner.user_name || c.check_user_roles( 'admin' ) %]
+                <div style="text-align:right;">
+		            <input class="button" value="Delete Post" title="Delete post" name="sbutton" tabindex="1" id="qr_submit" onclick="" type="submit">
+                </div>
+                [% END %]
+            [% END %]
+            <input name="post_id" value="[% post.post_id %]" type="hidden">
+            </form>
+		</h2>
+        
+		<div class="content">
+			<div id="post_message_293657">
+				<blockquote class="postcontent restore">
+					<!--Post content-->
+                    <div>
+                    [% post.post_body %]
+                    </div>
+                    <br>
+                    <center>
+                    <div>
+                    <img src="[% post.post_image %]" id="image post" alt="image post" title="image nice" border="">
+                    </div>
+                    </center>
+				</blockquote>
+			</div>
+                      
+		</div>
+		</div>
+	</div>
+        
+		<div class="separator"></div>
+		<div class="postlistfoot">
+			
+		</div>
+
+</div>
+[% END %]
+<!--Post end here-->
+
+<div id="below_postlist" class="noinlinemod below_postlist">
+	
+	<div id="pagination_bottom" class="pagination_bottom">
+	
+		<form id="yui-gen52" action="" method="get" class="pagination popupmenu nohovermenu">
+<input name="t" value="132387" type="hidden">
+	
+		<span><a href="[% c.req.uri_with({ page => pager.first_page }) %]">First</a></span>
+		<span><a id="yui-gen13" href="javascript://" class="popupctrl">Page 1 of 5</a></span>
+        [% l = 0 %]
+        [% m = 0 %]		
+        [% WHILE l < pager.total_entries %]
+            [% IF (m+2) > pager.current_page && m < pager.current_page %]
+            <span class="selected">
+            [% ELSE %]
+            <span>
+            [% END %]            
+            <a href="[% c.req.uri_with({ page => m+1 }) %]" title="Show results [% l*pager.entries_per_page %] to [% l + m*pager.entries_per_page %] of [% totalPost %]">[% m+1 %]</a></span>
+            [% m = m+1 %]
+            [% l = m*pager.entries_per_page %]           
+		[% END %]
+   
+	
+		<span class="prev_next"><a rel="next" href="[% c.req.uri_with({ page => pager.next_page })%]" title="Next Page - Results 11 to 20 of 23"><img title="Next" src="../threadcontent_files/next-right.png" alt="Next"></a></span>
+		<span><a href="[% c.req.uri_with({ page => pager.previous_page })%]">Previous</a></span>
+		
+		<span class="first_last"><a href="[% c.req.uri_with({ page => pager.last_page }) %]" title="Last Page - Results 21 to 23 of 23">Last<img title="Last" src="../threadcontent_files/last-right.png" alt="Last"></a></span>
+		
+	
+	<ul id="yui-gen53" class="popupbody">
+		<li class="formsubmit jumptopage"><label>Jump to page: <input name="page" size="4" type="text"></label> <input class="button" value="Go" type="submit"></li>
+	</ul>
+</form>
+	
+		<div class="clear"></div>
+
+<div class="clear"></div>
+	</div>
+</div>
+
+
+
+
+
+<!-- ajax errors table -->
+<div id="ajax_post_errors" class="hidden">
+	<div class="block">
+		<div class="blockhead floatcontainer">
+			<span class="blockhead_info"><input class="button" value=" X " id="quick_edit_errors_hide" tabindex="50" type="button"></span>
+			<h2>vBulletin Message</h2>
+		</div>
+		<div class="blockbody">
+			<div id="ajax_post_errors_message" class="blockrow">&nbsp;</div>
+		</div>
+		<div class="blockfoot">
+			<a href="http://" id="quick_edit_errors_cancel" class="textcontrol">Cancel Changes</a>
+		</div>
+	</div>
+</div>
+<!-- / ajax errors table -->
+
+<!-- scripts for quick reply and quick edit -->
+
+
+<!-- / scripts for quick reply and quick edit -->
+
+
+
+<div id="qr_defaultcontainer" class="floatcontainer qrcontainer">
+<form class="vbform" name="quick_reply" id="quick_reply" enctype="multipart/form-data" method="post" action="[% c.uri_for('thread_post') %]">
+	<div id="qr_error_tbody" class="block errorblock hidden">
+		<h3 class="blockhead">Errors</h3>
+		<div class="blockbody formcontrols">
+			<h3 class="blocksubhead">The following errors occurred with your submission</h3>
+			<div class="blockrow error" id="qr_error_td"></div>
+		</div>
+		<div class="blockfoot actionbuttons"><div class="group"><a href="javascript://" class="textcontrol" onclick="return qr_hide_errors()">Okay</a></div></div>
+	</div>
+	<div class="fullwidth"><h3 id="quickreply_title" class="blockhead"><img title="Quick Reply" src="../threadcontent_files/reply_40b.png" alt="Quick Reply" style="float:left;padding-right:10px"> Quick Reply<a name="quickreply"></a> <img style="display:none" id="progress_newreplylink_bottom" src="../threadcontent_files/progress.gif" alt=""></h3></div>
+	<div class="wysiwyg_block">
+	<div class="blockbody formcontrols">
+		<div class="blockrow">
+			
+		
+<div id="vB_Editor_QR" class="blockrow texteditor forum">
+	<div class="editor">
+		<div class="editor_textbox_container">
+				<div class="editor_textbox ">
+			         <textarea  rows="10" name="post_body"></textarea>
+				</div>
+		</div>
+		
+	</div>
+</div>
+
+<input name="wysiwyg" id="vB_Editor_QR_mode" value="1" type="hidden">
+	
+		</div>
+		
+		
+	</div>
+    <div>
+        <b>Upload image: </b><input type="file" name="upload_image" id="upload_image" width="100px">
+    </div>
+	<div class="blockfoot actionbuttons">
+		<div class="group">
+			<span id="qr_posting_msg" class="hidden">
+				<img title="Posting Quick Reply - Please Wait" src="../threadcontent_files/progress.gif" alt="Posting Quick Reply - Please Wait">&nbsp;<strong>Posting Quick Reply - Please Wait</strong>
+			</span>
+			<input class="button" value="Post Quick Reply" accesskey="s" title="(Alt + S)" name="sbutton" tabindex="1" id="qr_submit" onclick="clickedelm = this.value" type="submit">
+			<input id="qr_cancelbutton" class="button" style="" value="Cancel" accesskey="c" title="(Alt + C)" name="cancel" tabindex="4" onclick="qr_reset();" type="reset">
+		</div>
+	</div>
+    
+	</div>
+	<input name="threadurl" value="http://localhost:3000/showthread?thread_id=[% thread.thread_id %]" type="hidden">
+        [% IF ! c.user_exists %]
+	        <input name="loggedinuser" value="guest" type="hidden">
+        [% ELSE %]
+        	<input name="loggedinuser" value="[% c.user.get('user_name') %]" type="hidden">
+        [% END %]
+	<input name="posthash" value="" type="hidden">
+	<input name="threadid" value="[% thread.thread_id %]" type="hidden">
+
+
+	<!-- Mozilla work around for focusing on QR in WYSIWYG mode -->
+	<div id="qr_scroll"></div>
+
+
+</form>
+</div>
+
+
+
+	<!-- next / previous links -->
+	<div class="navlinks">
+		
+			<strong>«</strong>
+			<a href="http://" rel="nofollow">Previous Thread</a>
+			|
+			<a href="http://" rel="nofollow">Next Thread</a>
+			<strong>»</strong>
+		
+	</div>
+	<!-- / next / previous links -->
+[% END %]
+	

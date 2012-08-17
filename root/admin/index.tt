@@ -1,0 +1,10 @@
+[% WRAPPER admin/adminpage.tt %]
+
+
+
+[% END %]
+
+
+
+
+

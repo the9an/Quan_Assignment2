@@ -1,0 +1,16 @@
+[% WRAPPER page.tt %]
+
+<div>
+<p><b>Search result: [% totalResult %]</b></p>
+[% FOREACH result IN results %]
+<li> 
+<a href="../showthread?thread_id=[% result.thread_id %]">[% result.thread_title %]</a> <br>
+[% result.thread_content %]
+</li>
+[% END %]
+[% IF totalResult < 1 %]
+<li>Not Found!</li> 
+[% END %]
+</div>
+
+[% END %]

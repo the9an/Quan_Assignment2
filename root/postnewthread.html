@@ -1,0 +1,77 @@
+[% WRAPPER page.tt %]
+<div id="pagetitle">
+	<h1>Post New Thread</h1>
+	<p class="description">Forum: <a href="http://">Tin học căn bản</a></p>
+</div>
+
+<form class="vbform block" action="[% c.uri_for('../showtopic/post_new_thread') %]" enctype="multipart/form-data" method="post" name="vbform" onsubmit="return vB_Editor['vB_Editor_001'].prepare_submit(this.subject.value, 10)">
+
+	
+
+	<h2 class="blockhead">Your Message</h2>
+	<div class="blockbody formcontrols">
+	<br>
+	<label for="subject" class="full">Title:</label>
+				<input class="primary full textbox" size="70" name="thread_title" id="subject" maxlength="150" array="" <div="" style="white-space:nowrap" type="text">
+	<div class="editor">
+	<div>
+	<br>
+	</div>
+		<div class="editor_textbox_container">
+
+				<div class="editor_textbox ">
+
+			         <textarea  rows="10" name="thread_body"></textarea>
+
+				</div>
+
+		</div>
+
+		
+
+	</div>
+		<div class="section">
+			
+		
+
+
+ <img id="display_posticon" src="postnewthread_files/clear.gif" alt="">
+			</div>
+
+			
+
+	
+				<div class="editor_textbox editor_textbox_smilie">
+					<script type="text/javascript" src="postnewthread_files/ckeditor.js"></script><script type="text/javascript" src="postnewthread_files/vbulletin_textedit.js"></script>
+			<textarea id="vB_Editor_001_editor_backup" name="message_backup" class="hidden" rows="" cols=""></textarea>
+			<textarea autocomplete="off" style="visibility: hidden; width: 0px; min-width: 0px; display: none;" id="vB_Editor_001_editor" name="message" rows="8" cols="60" tabindex="1"></textarea>
+			<span id="cke_vB_Editor_001_editor" class="cke_skin_kama cke_1 cke_editor_vB_Editor_001_editor" dir="ltr" title=" " role="application" aria-labelledby="cke_vB_Editor_001_editor_arialbl" lang="en"><span id="cke_vB_Editor_001_editor_arialbl" class="cke_voice_label">
+			Rich Text Editor
+			</span><span class="cke_browser_gecko" role="presentation">
+			
+
+
+		
+		
+	</div>
+
+<input name="wysiwyg" id="vB_Editor_001_mode" value="1" type="hidden">
+	
+			
+		</div>
+    <div>
+        <b>Upload image: </b><input type="file" name="upload_image" id="upload_image" width="100px">
+    </div>
+    <div class="blockfoot actionbuttons">
+		<div class="group">
+				
+				<input name="loggedinuser" value="[% c.user.get('user_name') %]" type="hidden">
+				
+				<input class="button" name="sbutton" id="vB_Editor_001_save" value="Submit New Thread" accesskey="s" tabindex="1" type="submit">
+                <input name="topic_id" value="[% topicid %]" type="hidden">
+		</div>
+	</div>
+	</form></div>
+	
+	
+[% END %]
