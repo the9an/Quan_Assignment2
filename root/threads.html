@@ -1,0 +1,186 @@
+[% WRAPPER page.tt %]
+<link rel="stylesheet" type="text/css" href="../threads_files/css_002.css">
+<link rel="stylesheet" type="text/css" href="../threads_files/css_003.css">
+	
+<link rel="stylesheet" type="text/css" href="../threads_files/css.css">
+<div id="above_threadlist" class="above_threadlist">
+<form id="" action="[% c.uri_for('create_thread') %]" method="post" class="">
+		[% IF c.user_exists %]
+            <input class="newcontent_textcontrol" value="スレッドしる" accesskey="s" title="(Alt + S)" name="sbutton" tabindex="1" id="newreplylink_bottom" onclick="clickedelm = this.value" type="submit">
+        [% END %]
+        <input name="topic_id" value="[% topicid %]" type="hidden">
+</form>
+	
+	<div class="threadpagenav">
+		<form id="yui-gen9" action="" method="get" class="pagination popupmenu nohovermenu">
+<input name="f" value="72" type="hidden">
+	
+		<span><a href="[% c.req.uri_with({ page => pager.first_page }) %]">先頭</a></span>
+        [% i = 0 %]
+        [% j = 0 %]		
+        [% WHILE i < pager.total_entries %]
+            [% IF (j+2) > pager.current_page && j < pager.current_page %]
+            <span class="selected">
+            [% ELSE %]
+            <span>
+            [% END %]            
+            <a href="[% c.req.uri_with({ page => j+1 }) %]" title="Show results [% i*pager.entries_per_page %] to [% i + j*pager.entries_per_page %] of [% totalPost %]">[% j+1 %]</a></span>
+            [% j= j+1 %]
+            [% i = j*pager.entries_per_page %] 
+		[% END %]
+   
+	
+		<span class="prev_next"><a rel="next" href="[% c.req.uri_with({ page => pager.next_page })%]" title="Next Page - Results 11 to 20 of 23"><img title="Next" src="../threadcontent_files/next-right.png" alt="Next"></a></span>
+		<span><a href="[% c.req.uri_with({ page => pager.previous_page })%]">前のページ</a></span>
+		
+		<span class="first_last"><a href="[% c.req.uri_with({ page => pager.last_page }) %]" title="Last Page - Results 21 to 23 of 23">最後<img title="Last" src="../threadcontent_files/last-right.png" alt="Last"></a></span>
+		
+	
+	<ul id="yui-gen10" class="popupbody">
+		<li class="formsubmit jumptopage"><label>Jump to page: <input name="page" size="4" type="text"></label> <input class="button" value="Go" type="submit"></li>
+	</ul>
+</form>
+		<div id="threadpagestats" class="threadpagestats">スレッド: [% pager.total_entries %]</div>
+	</div>
+	
+</div>
+<div id="pagetitle" class="pagetitle">
+	Forum: <b>Nihongo</b>
+</div>
+
+
+<div id="threadlist" class="threadlist">
+	<form id="thread_inlinemod_form" action="/home/inlinemod.php?forumid=72" method="post">
+		<h2 class="hidden">Threads in This Forum</h2>
+
+		<div>
+		
+				<ol id="stickies" class="stickies">
+					<li class="threadbit" id="cat1">
+
+			
+			
+				<ol id="threads" class="threads">
+<!-- THREAD detail -->
+[% FOREACH thread IN threads %]
+<li class="threadbit hot new" id="thread_115271">
+	<div class="rating0 nonsticky">
+		<div class="threadinfo" title="">
+			<!--  status icon block -->
+			<a class="threadstatus" rel="vB::AJAX"></a>
+
+			<!-- title / author block -->
+			<div class="inner">
+				<h3 class="threadtitle">
+                    <a href="http://" id="thread_gotonew_115271"><img title="Go to first new post" class="gotonewpost" src="../threads_files/firstnew.png" alt="Go to first new post"></a>
+						
+
+                    
+                            <img src="../threads_files/icon1.png" alt="" border="0">
+                                      
+ 					[% IF thread.date_diff < 24*60*60 %]
+                	<a class="title threadtitle_unread" href="http://localhost:3000/showthread?thread_id=[% thread.thread_id %]" id="thread_title_115271">新しい: [% thread.thread_title %] </a>
+                    [% ELSE %]
+                    <a class="title threadtitle_unread" href="http://localhost:3000/showthread?thread_id=[% thread.thread_id %]" id="thread_title_115271">[% thread.thread_title %]</a>
+                    [% END %]
+				</h3>
+
+				<div class="threadmeta">				
+					<div class="author">
+							<span class="label">Started by&nbsp;<a >[% thread.topic_owner.user_name %]</a>,[% thread.thread_created_date %]</span>
+						        				
+							
+						
+						<!-- iconinfo -->
+						<div class="threaddetails td">
+							<div class="threaddetailicons">
+								
+									<img title="172, 2012, bác, bi?t, cho, code, dow, email, fix, gmail, hay, hoa, ino, key, key kis, kis, kis 2012, làm, l?i, lu?ng, m?i, nam, update, vào, xem" src="../threads_files/tag.png" alt="172, 2012, bác, bi?t, cho, code, dow, email, fix, gmail, hay, hoa, ino, key, key kis, kis, kis 2012, làm, l?i, lu?ng, m?i, nam, update, vào, xem">
+								
+								
+								
+								
+								
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- threadstats -->
+		
+		
+							
+		<!-- lastpost -->
+		<dl class="threadlastpost td">
+		
+			<dt class="lastpostby hidden">Last Post</dt>
+			
+			<dd>最後ポート: [% thread.last_post_time %]</span>
+			<a href="http://" class="lastpostdate understate" title="Go to last post"><img title="Go to last post" src="../threads_files/lastpost-right.png" alt="Go to last post"></a>
+			</dd>
+		
+		</dl>
+
+		
+		
+		
+		
+	</div>
+</li>
+
+				</ol>
+[% END %]
+                <!-- END THREAD detail -->
+			
+		</div>
+		<hr>
+
+		<div class="noinlinemod forumfoot">
+		
+		</div>
+
+	</form>
+</div>
+
+
+
+<div id="below_threadlist" class="noinlinemod below_threadlist">
+	
+	<div class="threadpagenav">
+		<form id="yui-gen41" action="/home/anti-virus/index51.html" method="get" class="pagination popupmenu nohovermenu">
+<input name="f" value="72" type="hidden">
+	    [% i = 0 %]
+        [% j = 0 %]
+		<span><a href="[% c.req.uri_with({ page => pager.first_page }) %]">先頭のページ</a></span>
+		
+        [% WHILE i < pager.total_entries %]
+            [% IF (j+2) > pager.current_page && j < pager.current_page %]
+            <span class="selected">
+            [% ELSE %]
+            <span>
+            [% END %]            
+            <a href="[% c.req.uri_with({ page => j+1 }) %]" title="Show results [% i*pager.entries_per_page %] to [% i + j*pager.entries_per_page %] of [% totalPost %]">[% j+1 %]</a></span>
+            [% j= j+1 %]
+            [% i = j*pager.entries_per_page %] 
+		[% END %]
+   
+	
+		<span class="prev_next"><a rel="next" href="[% c.req.uri_with({ page => pager.next_page })%]" title="Next Page - Results 11 to 20 of 23"><img title="Next" src="../threadcontent_files/next-right.png" alt="Next"></a></span>
+		<span><a href="[% c.req.uri_with({ page => pager.previous_page })%]">前のページ</a></span>
+		
+		<span class="first_last"><a href="[% c.req.uri_with({ page => pager.last_page }) %]" title="Last Page - Results 21 to 23 of 23">最後のページ<img title="Last" src="../threadcontent_files/last-right.png" alt="Last"></a></span>
+		
+	
+	<ul id="yui-gen42" class="popupbody">
+		<li class="formsubmit jumptopage"><label>Jump to page: <input name="page" size="4" type="text"></label> <input class="button" value="Go" type="submit"></li>
+	</ul>
+</form>
+		
+	</div>
+</div>
+[% END %]

@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/" dir="ltr" id="vbulletin_html" lang="en"><head>
+	<link rel="canonical" href="http://localhost:3000/">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta id="e_vb_meta_bburl" name="vb_meta_bburl" content="http://localhost:3000/">
+
+<meta name="generator" content=" 4.2.0">
+
+	<link rel="Shortcut Icon" href="http://" type="image/x-icon">
+
+
+<meta name="keywords" content="Lerning Japanese, Japanese, ninnanonihongo" />
+<meta name="description" content="Lerning Japanese" />
+
+<meta property="og:site_name" content="The Quan Forum" />
+<meta property="og:description" content="Lerning Japanese" />
+<meta property="og:url" content="http://localhost:3000/" />
+<meta property="og:type" content="website">
+<meta property="og:image" content="http://">
+
+
+
+
+	
+		<script src="../forum_files/ga.js" async="" type="text/javascript"></script><script src="../forum_files/beacon.js" async=""></script><script src="../forum_files/nocopy.js" type="text/javascript" async=""></script><script src="../forum_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="../forum_files/yuiloader-dom-event.js"></script>
+	
+
+<script type="text/javascript" src="../forum_files/connection-min.js"></script>
+<script type="text/javascript" src="../forum_files/vbulletin-core.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../forum_files/css_004.css">
+
+	
+
+	<title>Nguyen The Quan</title>
+	<script type="text/javascript" src="../forum_files/vbulletin_read_marker.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="../forum_files/css_002.css">
+        
+
+        
+        <link rel="stylesheet" type="text/css" href="../forum_files/css.css">
+
+
+	<script type="text/javascript" src="../forum_files/vbulletin-sidebar.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="../forum_files/css_003.css">
+
+
+</head>
+	<body><div style="visibility: hidden; position: absolute; overflow: hidden; padding: 0px; width: 0px; left: 0px; top: 0px; z-index: 1010;" id="WzTtDiV"></div>
+
+	<div class="above_body"> <!-- closing tag is in template navbar -->
+<div id="header" class="floatcontainer doc_header">
+	<div id="toplinks" class="toplinks">
+		
+			<ul class="nouser">
+			
+				<li><a href="../register" rel="nofollow">会員登録</a></li>
+			
+				<li>
+
+                        <!-- LOGIN - LOGOUT here -->
+                       
+                        [% INCLUDE login.tt %]
+                        <!-- END LOGIN - LOGOUT -->
+
+			<script type="text/javascript" src="../forum_files/vbulletin_md5.js"></script>
+ 		
+				</li>
+			
+			</ul>
+		
+	</div>
+	<div class="ad_global_header">
+		
+		
+	</div>
+	<hr>
+</div>
+
+	<div id="navbar" class="navbar">
+	<ul id="navtabs" class="navtabs floatcontainer">
+		
+		
+			<li class="selected"><a class="navtab" href="../">Forum</a>
+				<ul class="floatcontainer">
+					
+				
+				</ul>
+			</li>
+
+	</ul>
+	
+		<div id="globalsearch" class="globalsearch">
+			<form action="[% c.uri_for('../search') %]" method="post" id="navbar_search" class="navbar_search">
+				
+				<span class="textboxcontainer"><span><input name="query" class="textbox" tabindex="99" type="text"></span></span>
+				<span class="buttoncontainer"><span><input class="searchbutton" src="../forum_files/search.png" name="submit" onclick="document.getElementById('navbar_search').submit;" tabindex="100" type="image"></span></span>
+			</form>
+			<ul class="navbar_advanced_search">
+				<li><a href="http://" accesskey="4">Advanced Search</a></li>
+				
+			</ul>
+		</div>
+	
+</div>
+</div><!-- closing div for above_body -->
+
+<div class="body_wrapper">
+<div id="breadcrumb" class="breadcrumb">
+	<ul class="floatcontainer">
+		<li class="navbithome"><a href="http://localhost:3000/" accesskey="1"><img title="Home" src="../forum_files/navbit-home.png" alt="Home"></a></li>
+		
+		
+	<li class="navbit lastnavbit"><span>Forum</span></li>
+
+	</ul>
+	<hr>
+</div>
+
+
+
+	<div id="pagetitle">
+		<h1>ｸﾞｴﾝ ﾃｰ ｸｱﾝ</h1>
+		<p id="welcomemessage" class="description">Welcome to the Nguyen The Quan Forum.</p>
+	</div>
+	
+	<div id="content_container" class=" ">
+        <ol id="forums" class="floatcontainer">
+		<!-- Ads On Category - Coded by pdtan -->
+
+
+<li>&nbsp;</li>
+<li id="forum_ads_3">
+	
+</li>
+<li>
+       [% IF fr_mode == 'topics' %]
+<!-- / Ads On Category - Coded by pdtan -->
+
+	
+	<!-- template topics here -->
+           [% INCLUDE topics.html %]
+	
+<!-- Ads On Category - Coded by pdtan -->
+       [% ELSE %]
+           [% content %]
+       [% END %]
+
+	<div class="underblock"></div>
+</li>
+</ol>
+		<div id="content">
+	
+	<!-- main -->
+ 
+</li><br> 
+
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+	<!--
+	vbphrase['doubleclick_forum_markread'] = "Double-click this icon to mark this forum and its contents as read";
+	init_forum_readmarker_system();
+	//-->
+	</script>
+	 
+
+<div id="footer" class="floatcontainer footer">
+
+	<form action="" method="get" id="footer_select" class="footer_select">
+	
+	</form>
+
+	<ul id="footer_links" class="footer_links">
+		<li><a href="http://" rel="nofollow" accesskey="9">Contact Us</a></li>
+		
+		<li><a href="http://">Archive</a></li>
+		
+		
+		
+		<li><a rel="nofollow" href="http://" onclick="document.location.hash='top'; return false;">Top</a></li>
+	</ul>
+<script type="text/javascript">
+	<!--
+		// Main vBulletin Javascript Initialization
+		vBulletin_init();
+	//-->
+	</script>
+        
+</div>
+</div> <!-- closing div for body_wrapper -->
+
+
+<iframe src="../forum_files/ga.htm" hspace="0" vspace="0" marginwidth="0" marginheight="0" allowtransparency="true" id="trackga" frameborder="0" height="0" width="0"></iframe>
+
+<script type="text/javascript" src="../forum_files/vietvbb_topx.js"></script>
+<script type="text/javascript" src="../forum_files/wz_tooltip.js"></script>
+
+
+<br><div style="z-index:3" class="shade" align="center"></div>
+
+
+
+<table class="gstl_0 gssb_c" style="width: 200px; display: none; top: 978px; left: 978px; position: absolute;" cellpadding="0" cellspacing="0"><tbody><tr><td class="gssb_f"></td><td style="width: 100%;" class="gssb_e"></td></tr></tbody></table></body></html>

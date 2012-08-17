@@ -1,0 +1,29 @@
+[% IF ! c.user_exists %]
+<form id="navbar_loginform" action="[% c.uri_for('../login') %]"
+  method="post" accept-charset="utf-8">
+    <fieldset id="logindetails" class="logindetails">
+					<div>
+						<div>
+					<input type="text" name="user_name" value="" size="10" id="user_name"/>
+					<input type="password" name="password" value="" size="10" id="password"/>
+					<input class="loginbutton" tabindex="104" value="ﾛｸﾞｲﾝ" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" type="submit">
+						</div>
+					</div>
+				</fieldset>
+</form>
+[% ELSE %]
+<li>
+<a onclick="return log_out('Do you want to logout ?')" href="http://localhost:3000/logout" rel="nofollow">ログアウト</a>
+</li>
+[% IF c.check_user_roles( 'admin' ) %]
+<li>Hello, Admin.</li>
+[% ELSE %]
+<li>Hello, [% c.user.get('user_name') %].</li>
+[% END %]
+[% END %]
+
+
+
+
+
+

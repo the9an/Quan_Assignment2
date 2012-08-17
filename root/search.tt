@@ -1,0 +1,63 @@
+[% WRAPPER page.tt %]
+[% IF search_done == 'no' %]
+<form action="[% c.uri_for(c.controller('search').action_for ('searching')) %]" method="post">
+<h3 class="blocksubhead">Search For</h3>
+	<div class="section">
+		<div class="blockrow">
+			<label for="keyword">Keyword(s):</label>
+			<ul class="multifield group">
+				<li>
+					<input id="keyword" class="textbox" name="query" tabindex="1" value="" type="text">
+				</li>
+			</ul>
+		</div>
+		<div class="blockrow">
+			<label for="searchuser">User Name:</label>
+			<ul class="multifield group">
+				<li>
+					<div id="userfield" class="popupmenu nomouseover noclick nohovermenu">
+						<input autocomplete="off" class="textbox popupctrl" name="searchuser" id="userfield_txt" tabindex="1" type="text">
+					<div class="popupbody" id="userfield_body"></div></div>
+				</li>
+			</ul>
+		</div>
+		
+			
+		<div class="blockrow">
+			<label for="tag">Email:</label>
+			<div id="tag_add" class="popupmenu nomouseover noclick nohovermenu">
+				<input autocomplete="off" class="textbox primary popupctrl" name="email" id="tag_add_input" tabindex="1" type="text">
+			<div class="popupbody" id="tag_add_body"></div></div>
+		</div>
+			
+		
+		
+	</div>
+	<div class="blockfoot actionbuttons">
+		<div class="group">
+			<input class="button" name="dosearch" value="検索" tabindex="1" accesskey="s" type="submit">
+			<input class="button" value="リセット" tabindex="1" accesskey="r" type="reset">
+		</div>
+	</div>
+</form>
+[% ELSE %]
+<div>
+    <p><b>Search result: [% totalResult + totalPost %] スレッド</b></p>
+    [% FOREACH result IN results %]
+    <li> 
+        <a href="../showthread?thread_id=[% result.thread_id %]">スレッド: [% result.thread_title %]</a> <br>
+        [% result.thread_content %]
+    </li>
+    [% END %]
+    [% FOREACH post IN posts %]
+    <li> 
+        <a href="../showthread?thread_id=[% post.post_thread_id %]">返信: [% post.post_body %]</a> <br>
+        
+    </li>
+    [% END %]
+    [% IF (totalResult + totalPost) < 1 %]
+        <li>Not Found!</li> 
+    [% END %]
+</div>
+[% END %]
+[% END %]

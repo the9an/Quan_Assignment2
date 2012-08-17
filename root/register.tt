@@ -1,0 +1,29 @@
+[% WRAPPER page.tt %]
+    <form action="[% c.uri_for(c.controller('Root').action_for ('register')) %]" method="post">
+        <!-- [% IF err %][% err %][% END %] -->
+        <div>
+        <label>会員のなまえ: </label>
+        </div>
+        <div>
+        <input type="text" name="user_name"/>
+        [% IF errors.user_name %]
+            <span style="color: red;">[% errors.user_name %]</span>
+        [% END %]
+        </div>
+        <div> <label>えメール:  </label> </div>
+        <div><input type="text" name="user_email"/>
+        [% IF errors.user_email %]
+            <span style="color: red;">[% errors.user_email %]</span>
+        [% END %]
+        </div>
+        <div><label>ﾊﾞｽﾜｰﾄﾞ: </label></div>
+        <div><input type="password" name="password"/></div><br>
+        <div><input type="submit" value="会員登録"/></div>
+        <div>
+        [% IF errors.user_regist %]
+            <span style="color: red;">[% errors.user_regist %]</span>
+        [% END %]
+        </div>
+    </form>
+[% END %]
+
